@@ -1,0 +1,36 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+
+package(default_visibility = ["//visibility:public"])
+
+proto_library(
+    name = "any_proto",
+    srcs = ["google/protobuf/any.proto"],
+)
+
+proto_library(
+    name = "source_context_proto",
+    srcs = ["google/protobuf/source_context.proto"],
+)
+
+proto_library(
+    name = "type_proto_1",
+    srcs = [
+        "google/protobuf/type.proto",
+    ],
+    deps = [
+        "@com_google_protobuf//:source_context_proto",
+        "@com_google_protobuf//:any_proto",
+    ],
+)
+
+proto_library(
+    name = "type_proto_2",
+    srcs = [
+        "google/protobuf/type.proto",
+    ],
+    deps = [
+        ":any_proto",
+        ":source_context_proto",
+    ],
+)
+

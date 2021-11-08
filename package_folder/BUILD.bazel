@@ -5,11 +5,15 @@ package(default_visibility = ["//visibility:public"])
 proto_library(
     name = "any_proto",
     srcs = ["google/protobuf/any.proto"],
+    # The next line fixes "type_proto_2".
+    # strip_import_prefix = "/package_folder",
 )
 
 proto_library(
     name = "source_context_proto",
     srcs = ["google/protobuf/source_context.proto"],
+    # The next line fixes "type_proto_2".
+    # strip_import_prefix = "/package_folder",
 )
 
 proto_library(
@@ -29,7 +33,7 @@ proto_library(
         "google/protobuf/type.proto",
     ],
     deps = [
-        ":any_proto",
+        "@//package_folder:any_proto",
         ":source_context_proto",
     ],
 )
